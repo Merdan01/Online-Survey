@@ -8,24 +8,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>Online Survey</h1>
+        <h1>Соцопрос</h1>
+        <p>Пожалуйста, ответьте на несколько вопросов ниже. Ваши ответы будут записаны анонимно.</p>
+        
         <form id="surveyForm">
-            <!-- Здесь ты добавишь свои вопросы -->
-            <label for="question1">Каким устройством вы пользуйтесь?</label>
-            <input type="text" id="question1" name="Ваш вопрос"> <br>
-            <label for="question2">Каким устройством вы пользуйтесь?</label>
-            <select id="question2" name="Ваш вопрос">
-                <option value="Ответ 0"></option>
-                <option value="Ответ 1">Телефон</option>
-                <option value="Ответ 2">Планшет</option>
-                <option value="Ответ 2">Компютер</option>
-            </select><br>
-            <label for="question3">Каким устройством вы пользуйтесь?</label>
-            <textarea id="question3" name="Ваш вопрос"></textarea><br>
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="Имя" placeholder="Введите ваше имя" required>
+            
+            <label for="question1">Вопрос 1: Как вы узнали о нас?</label>
+            <input type="text" id="question1" name="Вопрос 1" placeholder="Ваш ответ" required>
 
+            <label for="question2">Вопрос 2: Оцените наш сервис от 1 до 5:</label>
+            <select id="question2" name="Вопрос 2" required>
+                <option value="">Выберите оценку</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <label for="question3">Вопрос 3: Что бы вы улучшили?</label>
+            <textarea id="question3" name="Вопрос 3" placeholder="Ваши предложения" rows="4"></textarea>
         </form>
-        <button id="submitBtn">Submit</button>
+        
+        <button id="submitBtn">Отправить</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

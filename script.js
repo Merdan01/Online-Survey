@@ -1,21 +1,47 @@
 document.getElementById('submitBtn').addEventListener('click', () => {
     const form = document.getElementById('surveyForm');
     const formData = new FormData(form);
-    const data = [];
+    const data = {};
 
+    // Собираем данные из формы
     formData.forEach((value, key) => {
-        data.push({ question: key, answer: value });
+        data[key] = value;
     });
 
-    const csvContent = "data:text/csv;charset=utf-8," +
-        data.map(e => `${e.question},${e.answer}`).join("\n");
+    // Логируем данные перед отправкой
+    console.log("Данные для отправки:", data);
 
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "survey_results.csv");
-    document.body.appendChild(link);
-
-    link.click();
-    document.body.removeChild(link);
+    // Отправка данных через fetch
+    fetch("https://script.google.com/macros/s/AKfycbyTwHi2Ut0ToUGRP-QIieu8oGj3dgL6XQSrAuVhFLVDnSHCxM_mezCTHz6QJOzwn0bkyQ/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            // Если статус ответа не успешный
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+        }
+        return response.text(); // Читаем текстовый ответ
+    })
+    .then(result => {
+        console.log("Результат:", result);
+        alert("Ответы успешно отправлены!");
+        form.reset();
+    })
+    .catch(error => {
+        // Логируем ошибку
+        console.error("Ошибка при отправке:", error);
+        alert("Произошла ошибка при отправке данных. Проверьте консоль для деталей.");
+    });
 });
+
+
+
+// Идентификатор развертывания
+// AKfycbyTwHi2Ut0ToUGRP-QIieu8oGj3dgL6XQSrAuVhFLVDnSHCxM_mezCTHz6QJOzwn0bkyQ
+
+// URL
+// https://script.google.com/macros/s/AKfycbyTwHi2Ut0ToUGRP-QIieu8oGj3dgL6XQSrAuVhFLVDnSHCxM_mezCTHz6QJOzwn0bkyQ/exec
