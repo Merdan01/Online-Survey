@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Survey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Survey</h1>
+        <form id="surveyForm">
+            <!-- Здесь ты добавишь свои вопросы -->
+            <label for="question1">Каким устройством вы пользуйтесь?</label>
+            <input type="text" id="question1" name="Ваш вопрос"> <br>
+            <label for="question2">Каким устройством вы пользуйтесь?</label>
+            <select id="question2" name="Ваш вопрос">
+                <option value="Ответ 0"></option>
+                <option value="Ответ 1">Телефон</option>
+                <option value="Ответ 2">Планшет</option>
+                <option value="Ответ 2">Компютер</option>
+            </select><br>
+            <label for="question3">Каким устройством вы пользуйтесь?</label>
+            <textarea id="question3" name="Ваш вопрос"></textarea><br>
+
+        </form>
+        <button id="submitBtn">Submit</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
